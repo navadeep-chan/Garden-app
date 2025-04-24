@@ -164,8 +164,6 @@ if submit:
         pdf_construction(co_name, sc_name, location, description, uploading_image_path)
         st.write("Plant details uploaded.")
         st.success("successfully uploaded")
-        if os.path.exists(uploading_image_path):
-            os.remove(uploading_image_path)
     else:
         st.markdown("No image uploaded. Please upload an image and continue.")
         uploading_image_path = None
