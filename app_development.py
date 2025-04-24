@@ -17,7 +17,7 @@ def pdf_construction(c_name, s_name, place, description, image_local_path):
     pdf.rect(margin, margin, pdf.w - 2*margin, pdf.h - 2*margin)
     
     #logo
-    logo_path = "C:\\Users\\NAVADEEP CHANDRAN\\Desktop\\justcode\\python\\self\\garden_digitalization\\images\\mssrf_logo.png"
+    logo_path = "images\\mssrf_logo.png"
     logo_width = 50
     x_position = (pdf.w - logo_width)/2
     pdf.image(logo_path, x = x_position, y = 10, w = logo_width)
@@ -108,7 +108,7 @@ def name_board_generation(common_name, scientific_name, link_of_pdf):
     qr_link = link_of_pdf
     
     # Load base background image
-    background = Image.open("C:\\Users\\NAVADEEP CHANDRAN\\Desktop\\justcode\\python\\self\\garden_digitalization\\images\\bg_image.png").convert('RGBA')
+    background = Image.open("images\\bg_image.png").convert('RGBA')
     
     # Generate QR code
     qr_image = qrcodelink(qr_link)
@@ -122,8 +122,8 @@ def name_board_generation(common_name, scientific_name, link_of_pdf):
     draw = ImageDraw.Draw(background)
     
     # Load fonts (adjust the path if needed)
-    common_font = ImageFont.truetype("C:\\Windows\\Fonts\\arialbd.ttf", 100)  # Arial Bold, size 60
-    scientific_font = ImageFont.truetype("C:\\Windows\\Fonts\\ariali.ttf", 60)  # Arial Italic, size 40
+    common_font = ImageFont.truetype("Fonts\\arialbd.ttf", 100)  # Arial Bold, size 60
+    scientific_font = ImageFont.truetype("Fonts\\ariali.ttf", 60)  # Arial Italic, size 40
     
     
     # Add Common Name text
