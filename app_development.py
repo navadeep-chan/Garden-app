@@ -188,17 +188,6 @@ with st.form(key = "nameboard form"):
             name_board_generation(co_name, sc_name, drive_link)
             st.success(f"Your nameboard for {co_name} is generated 👍")
 
-            #download button for nameboard
-            """nameboard_file_path = f"{sc_name}.png"
-            if os.path.exists(nameboard_file_path):
-                with open(nameboard_file_path, 'rb') as img:
-                    st.download_button(label = ("Download Nameboard"), data = img, file_name = nameboard_file_path, mime = "image/png")
-            else:
-                st.markdown("Sorry no image found")
-        else:
-            st.markdown("Please paste your pdf link to generate the nameboard.")"""
-
-
             #Download button for pdf
             new_pdf_file_path = f"{co_name}.pdf"
             if os.path.exists(new_pdf_file_path):
