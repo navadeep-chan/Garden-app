@@ -136,8 +136,8 @@ def name_board_generation(common_name, scientific_name, link_of_pdf):
     draw.text((50, 500), sc_name.capitalize(), font=scientific_font, fill="white")
     
     # Save final image
-    background.save(f"{co_name}.png")
-    background_image_file_path = os.path.abspath(f"{co_name}.png")
+    background.save(f"{sc_name}file.png")
+    background_image_file_path = os.path.abspath(f"{sc_name}file.png")
 
     pdf_image = Image.open(background_image_file_path).convert("RGB")
     output_imagetopdf_file_path = background_image_file_path.replace(".png", ".pdf")
@@ -189,7 +189,7 @@ with st.form(key = "nameboard form"):
             st.success(f"Your nameboard for {co_name} is generated 👍")
 
             #Download button for pdf
-            new_pdf_file_path = f"{co_name}.pdf"
+            new_pdf_file_path = f"{sc_name}file.pdf"
             if os.path.exists(new_pdf_file_path):
                 with open(pdf_file_path, "rb") as img:
                     st.download_button(label = ("Download PDF file"), data = img, file_name = new_pdf_file_path, mime = "application/pdf")
