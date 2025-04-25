@@ -191,8 +191,8 @@ with st.form(key = "nameboard form"):
             #Download button for pdf
             new_pdf_file_path = f"{sc_name}file.pdf"
             if os.path.exists(new_pdf_file_path):
-                with open(new_pdf_file_path, "rb") as img:
-                    st.download_button(label = ("Download PDF file"), data = img, file_name = new_pdf_file_path, mime = "application/pdf")
+                with open(new_pdf_file_path, "rb") as file:
+                    st.download_button(label = ("Download PDF file"), data = file, file_name = new_pdf_file_path, mime = "application/pdf")
             else:
                 st.markdown("No pdf uploaded sorry :(")
         
