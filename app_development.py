@@ -192,8 +192,8 @@ with st.form(key = "nameboard form"):
             #download button for nameboard
             nameboard_file_path = f"{sc_name}.png"
             if os.path.exists(nameboard_file_path):
-                with open(nameboard_file_path, "rb") as img:
-                    st.download_button(label= ("Download Nameboard"), data = img, file_name = nameboard_file_path, mime = "image/png")
+                with open(nameboard_file_path, 'rb') as img:
+                    st.download_button(label = ("Download Nameboard"), data = img, file_name = nameboard_file_path, mime = "image/png")
             else:
                 st.markdown("Sorry no image found")
         else:
