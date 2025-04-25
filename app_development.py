@@ -136,13 +136,12 @@ def name_board_generation(common_name, scientific_name, link_of_pdf):
     draw.text((50, 500), sc_name.capitalize(), font=scientific_font, fill="white")
     
     # Save final image
-    background.save(f"{sc_name}.png")
-    background_image_file_path = os.path.abspath(f"{sc_name}.png")
-    if os.path.exists(background_image_file_path):
-        print(f"Name board for{co_name} is ready.")
-    else:
-        print(f"Sorry Your name board for {co_name} is not created \nplease try again")
+    background.save(f"{co_name}.png")
+    background_image_file_path = os.path.abspath(f"{co_name}.png")
 
+    pdf_image = Image.open(background_image_file_path).convert("RGB")
+    output_imagetopdf_file_path = background_image_file_path.replace(".png", ".pdf")
+    pdf_image.save(output_imagetopdf_file_path, "PDF", resolution = 100.0)
    
 #UI/UX
 title = st.title("Digitalize Your Garden")
@@ -190,14 +189,21 @@ with st.form(key = "nameboard form"):
             st.success(f"Your nameboard for {co_name} is generated 👍")
 
             #download button for nameboard
-            nameboard_file_path = f"{sc_name}.png"
+            """nameboard_file_path = f"{sc_name}.png"
             if os.path.exists(nameboard_file_path):
                 with open(nameboard_file_path, 'rb') as img:
                     st.download_button(label = ("Download Nameboard"), data = img, file_name = nameboard_file_path, mime = "image/png")
             else:
                 st.markdown("Sorry no image found")
         else:
-            st.markdown("Please paste your pdf link to generate the nameboard.")
+            st.markdown("Please paste your pdf link to generate the nameboard.")"""
+
+
+            #Download button for pdf
+            new_pdf_file_path = f"{co_name}.pdf"
+            if os.path.exists(new_pdf_file_path):
+                with open(pdf_file_path, "rb") as file:
+                    st.download_button(label = ("Download PDF"), data = file, file_name = new_pdf_file_path, mime = "application/pdf")
         
                 
     
