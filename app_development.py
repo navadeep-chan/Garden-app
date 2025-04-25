@@ -166,7 +166,13 @@ if submit:
         uploading_image_path = os.path.abspath(temp_path)
         pdf_construction(co_name, sc_name, location, description, uploading_image_path)
         st.write("Plant details uploaded.")
-        st.success("successfully uploaded")
+        st.success("PDF generated successfully")
+
+        #Download button for pdf
+        pdf_file_path = f"{sc_name}.pdf"
+        if os.path.exists(pdf_file_path):
+            with open(pdf_file_path, "rb") as file:
+                st.download_button(label = ("Download PDF"), data = file, file_name = pdf_file_path, mime = "application/pdf")
     else:
         st.markdown("No image uploaded. Please upload an image and continue.")
         uploading_image_path = None
@@ -177,9 +183,15 @@ with st.form(key = "nameboard form"):
     name_board = st.form_submit_button("Generate nameboard")
     if name_board:
         if drive_link is not None:
-            st.markdown("Nameboard is generating...")
+            st.markdown("Nameboard generated.")
             name_board_generation(co_name, sc_name, drive_link)
             st.success(f"Your nameboard for {co_name} is generated 👍")
+
+            #download button for nameboard
+            nameboard_path = f"{sc_name}.png"
+            if os.path.exists(nameboard_path):
+            with open(nameboard_path, "rb") as img:
+                st.download_button(label="Download Nameboard", data=img, file_name=nameboard_path, mime="image/png")
         else:
             st.markdown("Please paste your pdf link to generate the nameboard.")
         
