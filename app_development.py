@@ -138,6 +138,7 @@ def name_board_generation(common_name, scientific_name, link_of_pdf):
     # Save final image
     background.save(f"{sc_name}.png")
     background_image_file_path = os.path.abspath(f"{sc_name}.png")
+    return background_image_file_path
     if os.path.exists(background_image_file_path):
         print(f"Name board for{co_name} is ready.")
     else:
@@ -186,11 +187,11 @@ with st.form(key = "nameboard form"):
     if name_board:
         if drive_link is not None:
             st.markdown("Nameboard generated.")
-            name_board_generation(co_name, sc_name, drive_link)
+            nameboard_path_file_variable = name_board_generation(co_name, sc_name, drive_link)
             st.success(f"Your nameboard for {co_name} is generated 👍")
 
             #download button for nameboard
-            nameboard_path = f"{sc_name}.png"
+            nameboard_path = nameboard_path_file_variable
             if os.path.exists(nameboard_path):
                 with open(nameboard_path, "rb") as img:
                     st.download_button(label="Download Nameboard", data=img, file_name=nameboard_path, mime="image/png")
