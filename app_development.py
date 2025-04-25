@@ -173,6 +173,8 @@ if submit:
         if os.path.exists(pdf_file_path):
             with open(pdf_file_path, "rb") as file:
                 st.download_button(label = ("Download PDF"), data = file, file_name = pdf_file_path, mime = "application/pdf")
+        else:
+            st.markdown("Sorry no pdf found")
     else:
         st.markdown("No image uploaded. Please upload an image and continue.")
         uploading_image_path = None
@@ -190,8 +192,10 @@ with st.form(key = "nameboard form"):
             #download button for nameboard
             nameboard_path = f"{sc_name}.png"
             if os.path.exists(nameboard_path):
-            with open(nameboard_path, "rb") as img:
-                st.download_button(label="Download Nameboard", data=img, file_name=nameboard_path, mime="image/png")
+                with open(nameboard_path, "rb") as img:
+                    st.download_button(label="Download Nameboard", data=img, file_name=nameboard_path, mime="image/png")
+            else:
+                st.markdown("Sorry no image found")
         else:
             st.markdown("Please paste your pdf link to generate the nameboard.")
         
