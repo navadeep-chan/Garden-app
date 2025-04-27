@@ -192,11 +192,11 @@ if name_board:
         name_board_generation(co_name, sc_name, drive_link)
         st.success(f"Your nameboard for {co_name} is generated 👍")
 
-        #Download button for pdf
+        #Download button for image pdf
         new_pdf_file_path = f"{sc_name}file.pdf"
         if os.path.exists(new_pdf_file_path):
-            with open(new_pdf_file_path, "rb") as file:
-                st.download_button(label = ("Download PDF file"), data = file, file_name = new_pdf_file_path, mime = "application/pdf")
+            with open(new_pdf_file_path, "rb") as files:
+                st.download_button(label = ("Download"), data = files, file_name = new_pdf_file_path, mime = "application/pdf")
         else:
             st.markdown("No pdf uploaded sorry :(")
         
