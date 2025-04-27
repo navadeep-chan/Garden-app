@@ -146,6 +146,8 @@ def name_board_generation(common_name, scientific_name, link_of_pdf):
 #UI/UX
 title = st.title("Digitalize Your Garden")
 
+
+#first form for pdf 
 with st.form(key="plant_form"):
     co_name = st.text_input("Enter your plant common name").upper()
     sc_name = st.text_input("Enter your plant Scientific name").capitalize()
@@ -154,7 +156,7 @@ with st.form(key="plant_form"):
     uploaded_image = st.file_uploader("Please upload the image of the plant species remember it should be in (.jpeg, .jpeg, .png) " , type = ["jpg","jpeg", "png"])
     submit = st.form_submit_button("Submit")
  
-#first form for pdf   
+#first form submit  
 if submit:
     if uploaded_image is not None:
         st.markdown("Image uploaded")
@@ -182,19 +184,21 @@ if submit:
 with st.form(key = "nameboard form"):
     drive_link = st.text_input("Please provide your pdf file link:")
     name_board = st.form_submit_button("Generate nameboard")
-    if name_board:
-        if drive_link is not None:
-            st.markdown("Nameboard generated.")
-            name_board_generation(co_name, sc_name, drive_link)
-            st.success(f"Your nameboard for {co_name} is generated 👍")
 
-            #Download button for pdf
-            new_pdf_file_path = f"{sc_name}file.pdf"
-            if os.path.exists(new_pdf_file_path):
-                with open(new_pdf_file_path, "rb") as file:
-                    st.download_button(label = ("Download PDF file"), data = file, file_name = new_pdf_file_path, mime = "application/pdf")
-            else:
-                st.markdown("No pdf uploaded sorry :(")
+#second form submit
+if name_board:
+    if drive_link is not None:
+        st.markdown("Nameboard generated.")
+        name_board_generation(co_name, sc_name, drive_link)
+        st.success(f"Your nameboard for {co_name} is generated 👍")
+
+        #Download button for pdf
+        new_pdf_file_path = f"{sc_name}file.pdf"
+        if os.path.exists(new_pdf_file_path):
+            with open(new_pdf_file_path, "rb") as file:
+                st.download_button(label = ("Download PDF file"), data = file, file_name = new_pdf_file_path, mime = "application/pdf")
+        else:
+            st.markdown("No pdf uploaded sorry :(")
         
                 
     
